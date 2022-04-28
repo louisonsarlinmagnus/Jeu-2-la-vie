@@ -23,4 +23,4 @@ cd Jeu-2-la-vie
 And then run the server:
 ```sh
 python3 manage.py runserver
-```
+``` 
