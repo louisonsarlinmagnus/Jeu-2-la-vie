@@ -1,7 +1,8 @@
 ![Build](https://github.com/louisonsarlinmagnus/Jeu-2-la-vie/actions/workflows/django.yml/badge.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/louisonsarlinmagnus/jeu-2-la-vie?logo=docker&color=0aa8d2&logoColor=fff)
-![Version](https://img.shields.io/github/package-json/v/louisonsarlinmagnus/jeu-2-la-vie?logo=azurepipelines&amp;color=0aa8d2)
-  
+![Version](https://img.shields.io/badge/version-v0.0.0-<COLOR>?logo=azurepipelines&amp;color=0aa8d2)
+
+
 # Jeu-2-la-vie
 Python Webapp using Django to play with Conway's Game of Life
 
