@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  {% block title %}<title>Jeu 2 la vie</title>{% endblock %}
+  <title>Jeu 2 la vie</title>
 </head>
 <body>
-  {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
-  {% block content %}{{ vie }}{% endblock %}
+  <table>
+    {% for lignes in vie %}
+      <tr>
+        {% for case in lignes %}
+          {% if case.est_vivant %}
+            <td style="text-align:center; vertical-align: middle; width: 1em; height: 2em; background-color: lightgreen;">
+              {{ case }}
+            </td>
+          {% else %}
+            <td style="text-align:center; vertical-align: middle; width: 2em; height: 2em;">
+              {{ case }}
+            </td>
+          {% endif %}
+        {% empty %}
+          <p>Il n'y a aucune trace de vie ici.</p>
+        {% endfor %}
+      </tr>
+    {% empty %}
+      <p>Il n'y a aucune trace de vie ici.</p>
+    {% endfor %}
+  </table>
+  <div style="display:none" id="intervalle">{{intervalle}}</div>
 </body>
+<script type="text/javascript">
+  function autoRefreshPage()
+  {
+      window.location = window.location.href;
+  }
+  var intervalle = document.getElementById("intervalle").innerHTML;
+  setInterval('autoRefreshPage()', intervalle);
+</script>
 </html>

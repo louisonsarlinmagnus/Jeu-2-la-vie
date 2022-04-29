@@ -27,11 +27,11 @@ class Cellule:
         self.actuel = self.futur
 
     def __str__(self: Cellule) -> str:
-        if self.actuel:
-            chaine = "X"
-        else:
-            chaine = "-"
-        return chaine
+        # if self.actuel:
+        #     chaine = ""
+        # else:
+        #     chaine = "-"
+        return " "
 
     def calcule_etat_futur(self: Cellule) -> None:
         nbre_voisins_vivants = 0

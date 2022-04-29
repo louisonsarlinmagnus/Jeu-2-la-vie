@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from jeuDeLaVie.classes.grille import Grille
 import os
 
-vie = Grille(25, 10)
+vie = Grille(25, 25)
 vie.remplir_alea(25)
 vie.affecte_voisins()
 
@@ -21,7 +21,10 @@ def index(request):
     vie.actualise()
 
     context = {
-        'vie' : vie,
+        'vie' : vie.matrice,
+        'range_largeur' : range(int(vie.largeur)),
+        'range_hauteur' : range(int(vie.hauteur)),
+        'intervalle': 1000,
     }
     
     return render(request, 'jeuDeLaVie/index.html', context)
