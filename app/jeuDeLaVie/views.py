@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse
 from jeuDeLaVie.classes.grille import Grille
-import time
+import os
 
 vie = Grille(25, 10)
 vie.remplir_alea(25)
@@ -18,4 +19,9 @@ def index(request):
     #     time.sleep(0.5)
     vie.jeu()
     vie.actualise()
-    return HttpResponse(vie)
+
+    context = {
+        'vie' : vie,
+    }
+    
+    return render(request, 'jeuDeLaVie/index.html', context)
