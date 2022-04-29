@@ -22,6 +22,7 @@ RUN useradd django
 #Swithcing to that user
 USER django
 
-# EXPOSE 8000
-
-# CMD ["python", "./manage.py", "runserver", "0.0.0.0:8000"]
+#Exposing the port to acess the app
+EXPOSE 8003
+#Running the server on port 8003
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8003"]
