@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-36_li=np$5t_cbxb_s#z#o@zwp3--g4=$m1%(=xuvn7^cx%dlg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['j2lv.lsarlinmagnus.fr', 'localhost']
+DEFAULT_FROM_EMAIL = 'louisonsm.pro@gmail.com'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jeuDeLaVie.apps.JeudelavieConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
