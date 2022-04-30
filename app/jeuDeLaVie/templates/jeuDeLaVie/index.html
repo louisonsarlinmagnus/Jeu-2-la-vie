@@ -1,31 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jeuDeLaVie/style.css' %}">
 <head>
   <title>Jeu 2 la vie</title>
 </head>
 <body>
-  <table>
-    {% for lignes in vie %}
-      <tr>
-        {% for case in lignes %}
-          {% if case.est_vivant %}
-            <td style="text-align:center; vertical-align: middle; width: 1em; height: 2em; background-color: lightgreen;">
-              {{ case }}
-            </td>
-          {% else %}
-            <td style="text-align:center; vertical-align: middle; width: 2em; height: 2em;">
-              {{ case }}
-            </td>
-          {% endif %}
-        {% empty %}
-          <p>Il n'y a aucune trace de vie ici.</p>
-        {% endfor %}
-      </tr>
-    {% empty %}
-      <p>Il n'y a aucune trace de vie ici.</p>
-    {% endfor %}
-  </table>
-  <div style="display:none" id="intervalle">{{intervalle}}</div>
+  <div id="titre">
+    <h1 class="titre">Jeu 2 la vie</h1>
+  </div>
+  <div id="zone_2_jeu" class="zone_2_jeu">
+    <div class="sep_jeu"></div>
+    <div id="plateau_2_jeu" class="plateau_2_jeu">
+      <div class="bordure_2_jeu">
+        <table class="grille_vie">
+          {% for lignes in vie %}
+            <tr>
+              {% for case in lignes %}
+                {% if case.est_vivant %}
+                  <td class="case cellule_vivante">
+                    {{ case }}
+                  </td>
+                {% else %}
+                  <td class="case">
+                    {{ case }}
+                  </td>
+                {% endif %}
+              {% empty %}
+                <p>Il n'y a aucune trace de vie ici.</p>
+              {% endfor %}
+            </tr>
+          {% empty %}
+            <p>Il n'y a aucune trace de vie ici.</p>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div id="legende" class="legende">
+      <p class="gras">Légende :</p>
+      <div id="legende_vivante" class="legende_cellule">
+        <div class="case_legende cellule_vivante"></div>
+        <p>Cellule vivante</p>
+      </div>
+      <div id="legende_morte" class="legende_cellule">
+        <div class="case_legende"></div>
+        <p>Cellule morte</p>
+      </div>
+      <div id="legende_regle">
+        <p class="gras">Règles d'évolution :</p>
+        <ul>
+          <li>Si une cellule a exactement trois voisines vivantes, elle est vivante à l’étape suivante.</li>
+          <li>Si une cellule a exactement deux voisines vivantes, elle reste dans son état actuel à l’étape suivante.</li>
+          <li>Si une cellule a strictement moins de deux ou strictement plus de trois voisines vivantes, elle est morte à l’étape
+          suivante.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="display:none;" id="intervalle">{{intervalle}}</div>
 </body>
 <script type="text/javascript">
   function autoRefreshPage()
@@ -33,6 +65,6 @@
       window.location = window.location.href;
   }
   var intervalle = document.getElementById("intervalle").innerHTML;
-  setInterval('autoRefreshPage()', intervalle);
+  // setInterval('autoRefreshPage()', intervalle);
 </script>
 </html>
