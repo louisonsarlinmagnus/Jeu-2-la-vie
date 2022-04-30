@@ -2,6 +2,7 @@ from __future__ import annotations
 from jeuDeLaVie.classes.cellule import Cellule
 from typing import List
 from random import random
+from jeuDeLaVie.models import Forme
 
 
 class Grille():
@@ -87,6 +88,19 @@ class Grille():
                 cellule = self.getXY(i, j)
                 cellule.basculer()
 
-if __name__ == "__main__":
-    grille = Grille(4, 5)
-    #print(grille)
+    def strToListe(string):
+        try:
+            out=[]
+            for i in list(string.split(",")):
+                out.append(list(map(int, list(i.replace('(', '').replace(')', '').split(";")))))
+            return (out)
+        except ValueError:
+            raise Exception("La Forme n'est pas valide")
+
+    def ajouterForme(self: Grille, forme: Forme, x: int, y: int) -> None: #[[0,0],[0,1],[1,0],[1,1]]
+        if x < self.hauteur and y < self.largeur:
+            for couple in self.strToListe(forme.cellules):
+                cellule = self.getXY(couple[0]+x, couple[1]+y)
+                cellule.naitre()
+                cellule.basculer()
+
